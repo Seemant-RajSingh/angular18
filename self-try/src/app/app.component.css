@@ -1,0 +1,7 @@
+.active {
+    background: green;
+}
+
+.notActive {
+    background: red;
+}

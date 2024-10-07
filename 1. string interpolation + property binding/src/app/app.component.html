@@ -1,0 +1,33 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<app-searchbox></app-searchbox>
+<hr>
+
+<!-- ________________________________________ -->
+
+<h1>{{title}}</h1> {{1+1/2*2}}
+<br>
+<!-- <img src="{{imgURL}}">   str interpolation -->    
+<img [src]="imgURL"> <!-- property binding (better) -->
+<br>
+<button [class.active]="isActive" [class.notActive]="!isActive">class Binded btn</button>
+<button [style.background]="isActive ? 'purple':'pink'" [style.border]="isActive ? '3px solid green':'3px solid red'">Style binded btn</button> 
+
+
+ <!-- <button (mouseover)="btnClick()">event binded btn</button>
+
+ <input (keyup)="keyPress($event)" placeholder="enter text">
+ <input (keyup.enter or keyup.c)="keyPress($event)" placeholder="enter text"> -->
+
+ <input (keyup.enter)="keyPress(txt)" #txt  placeholder="enter text">
+ <br>
+
+ <label>edit username: </label>
+ <input [value]="defaultUser" #user (keyup.Enter)="changeName(user)">
+<h3> {{defaultUser}}</h3> 
+<!-- (for above) better way - 2 way data bind(below): -->
+<br>
+<label>2 way db ip: </label>
+<input type="text" [(ngModel)]="currentUser" (keyup)="checkName(currentUser)">
+<h3>{{currentUser}}</h3>
+<!-- h3 updates in real time as we edit input -->

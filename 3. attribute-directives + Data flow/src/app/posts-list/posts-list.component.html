@@ -1,0 +1,11 @@
+<div>
+    <p>posts-list component (child component)</p>
+    <h3>{{passedPostTitle}} recieved by child</h3>
+
+    <button (click)="sendToParent()">Send message to parent</button>
+
+    <app-card>
+        <p style="color: red">Ng-content loaded data :- </p>
+        <p>data from post component now as parent to child</p>
+    </app-card>
+</div>

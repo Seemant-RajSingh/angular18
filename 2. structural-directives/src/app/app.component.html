@@ -1,0 +1,112 @@
+ <h1 style="color: rgb(98, 98, 98); border: 2px solid gray; display: inline-block;">Structural directives</h1>
+ 
+ <!-- <div [ngSwitch]="userRole">
+    <p *ngSwitchCase="'Admin'">Welcome Admin</p>
+    <p *ngSwitchCase="'Member'">Welcome Member</p>
+    <p *ngSwitchCase="'Editor'">Welcome Editor</p>
+    <p *ngSwitchDefault>Welcome Guest, u may wanna log in</p>
+  </div> -->
+  <h2>switch case</h2>
+  @switch(userRole){
+    @case('Admin'){
+      <p>Welcome admin</p>
+    }
+    @case('Member'){
+      <p>Welcome Member</p>
+    }
+    @case('Editor'){
+      <p>Welcome Editor</p>
+    }
+    @default{
+      <p>Welcome Guest, U may wanna log in</p>
+    }
+  }
+  <hr>
+
+
+  <!-- ____________________________________________________ -->
+
+
+<h2 *ngIf="isLogged; else message">{{usrname}} by ngif</h2>
+
+<h2 *ngIf="!isLogged">Not logged ny ngIf</h2>
+<ng-template #message>
+  <h4>User not logged (Loaded using ng-template)</h4>
+</ng-template>
+<!-- ____________________________ -->
+
+@if (count<3) {
+  <button (click)="handleLogin()">{{loginBtnText}}</button>
+  <button (click)="incCount()">fail login ({{3-count}} attempts)</button>
+  <h3>attempts remain by &#64;if</h3>
+}
+@else {
+  <h3>attempts exhausted by &#64;if</h3>
+}
+<!-- <button (click)="toggle()" [style.background]="isLogged ? 'green' : 'red'">toggle</button> -->
+<hr>
+
+
+
+
+<h3>Teams - ngtemplate buttons</h3>
+
+<ng-template #joinTeam>
+  <button>Join team!</button>
+</ng-template>
+
+<!-- ngTemplateOutlet - repeat a piece of template code without repeating html (clean) -->
+<div [ngTemplateOutlet]="joinTeam">
+  Team A
+</div>
+<div [ngTemplateOutlet]="joinTeam">
+  Team B
+</div>
+<hr>
+
+
+
+
+<!-- {{monke[1]}} -->
+ <p>Loading array using &#64;for</p>
+  <!-- <ul>
+    catch index and length of array:--
+    <li *ngFor="let user of usersArray; let i = index">{{usersArray.length}},{{i}},{{user}}</li>
+  </ul> -->
+
+  @if(usersArray.length == 0) {
+    <h3>No users to display - by &#64;if</h3>
+  }
+  <ul>
+    @for (user of usersArray; track user; let i = $index; let userCount = $count; let first = $first; let last = $last; let even = $even; let odd = $odd) {
+      <li>
+        <ul>
+          <li>details: {{userCount}}: {{i}}, {{user.name}}, {{user.mail}}</li>
+          <li>first: {{first}}</li>
+          <li>last: {{last}}</li>
+          <li>even: {{even}}</li>
+          <li>odd: {{odd}}</li>
+        </ul>
+      </li>
+      <button (click)="onDelete(user, i)">Delete</button>
+      <!-- <h4 *ngFor="let user of usersArray">{{user}}</h4> 2x2=4 times array printed -->
+    }
+    @empty {
+      <h3>No users to display - by &#64;empty</h3>
+    }
+  </ul>
+  
+
+  <!-- ** try 1 way data bind instead of 2 for below add user form -->
+  <form (ngSubmit)="addUser()">
+    <input type="text" placeholder="name" [(ngModel)]="newName" name="name">
+    <input type="text" placeholder="email" [(ngModel)]="newMail" name="email">
+    <button type="submit">Add user</button>
+  </form>
+  <hr>
+
+
+
+
+
+  <!--todo app revision -->

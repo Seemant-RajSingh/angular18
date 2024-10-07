@@ -1,0 +1,13 @@
+<app-post-list [parentMessage]="parentToChildMessage"></app-post-list>
+<button (click)="changeParentMessage()">change Parent Message</button>
+<hr>
+
+<!-- ____________________________________ -->
+
+<div *ngComponentOutlet="loadComponent()">this text won't load</div>
+<hr>
+
+<!-- ____________________________________ -->
+
+<button (click)="loadComponent2()">Render app-post-list</button>
+<button (click)="removeComponent()">Remove app-post-list</button>

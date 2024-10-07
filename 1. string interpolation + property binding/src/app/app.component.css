@@ -1,0 +1,11 @@
+h1 {
+    color: rgb(75, 75, 75)
+}
+
+.active {
+    background: green;
+}
+
+.notActive {
+    background: red;
+}

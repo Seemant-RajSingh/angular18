@@ -1,0 +1,39 @@
+<!-- style binding *** <h1 [style.color]="isLogged ? 'green' : 'red'" [style.textTransform]="isLogged ? 'uppercase' : 'lowercase'">Admin</h1> -->
+
+<h1 [ngStyle]="{
+  'color': isLogged ? 'green' : 'red',
+  'textTransform': isLogged ? 'uppercase' : 'lowercase'
+}">
+  Welcome ngStyle styled
+</h1>
+
+<h2 [ngClass]="{
+  'logged': isLogged,
+  'unlogged': !isLogged,
+}">
+  Admin ngClass
+</h2>
+<hr>
+
+<!-- ________________________________ -->
+
+<h2>{{postTitle}}</h2>
+<app-posts-list [passedPostTitle]="postTitle" (MessageEvent)="recievedChildMessage2($event)"></app-posts-list>
+<!-- can share more than 1 -->
+{{messageFromChild}}
+<br>
+{{messageFromChild2}}
+<hr>
+
+<!-- _________________________________ -->
+
+<app-card>
+  <span header style="color:red">Ng-content loaded data :- </span>
+  <p body>data from base parent to child</p>
+</app-card>
+
+<app-card2>
+  <p first>Data 1</p>
+  <p second>Data 2</p>
+  <p third>Data 3</p>
+</app-card2>
